@@ -8,7 +8,7 @@ def even(number):
 
 def brain_even():
     print('Welcome to the Brain Games!')
-    name = input('May I have your name?')
+    name = input('May I have your name? ')
     print(f'Hello, {name}!')
 
     score = 0
