@@ -1,5 +1,8 @@
 import random
 
+def main():
+    brain_even()
+
 def even(number):
     return number % 2 == 0 
 
@@ -30,4 +33,4 @@ def brain_even():
     print(f'Congratulations, {name}!')    
           
 if __name__ == "__main__":
-    brain_even()
+    main()
