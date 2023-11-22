@@ -1,5 +1,8 @@
 import random
 
+def main():
+    brain_calc()
+
 def plus(a, b):
     return a + b
 
@@ -49,4 +52,4 @@ def brain_calc():
     print(f'Congratulations, {name}!')
 
 if __name__ == "__main__":
-    brain_calc()
+    main()

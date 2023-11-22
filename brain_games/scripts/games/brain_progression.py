@@ -1,5 +1,8 @@
 import random
 
+def main():
+    brain_progression()
+
 def generate_progression(length):
     start = random.randint(1, 10)
     diff = random.randint(1, 5)

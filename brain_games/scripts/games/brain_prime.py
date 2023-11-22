@@ -1,5 +1,8 @@
 import random
 
+def main():
+    brain_prime()
+
 def is_prime(num):
     if num < 2:
         return False

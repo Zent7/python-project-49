@@ -1,7 +1,10 @@
 import random
 import math
 
-def gcd_game():
+def main():
+    brain_gcd()
+
+def brain_gcd():
     print("Welcome to the Brain Games!")
     name = input("May I have your name? ")
     print(f"Hello, {name}!")
@@ -28,4 +31,4 @@ def gcd_game():
     print(f"Congratulations, {name}!")
 
 if __name__ == "__main__":
-    gcd_game()
+    main()
