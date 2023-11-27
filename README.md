@@ -12,3 +12,8 @@ https://asciinema.org/a/e1hUSOAW0xXQameWkljeHUryL
 https://asciinema.org/a/pYl3m5wGzlKOmBak0sMU0Ti90
 
 https://asciinema.org/a/NvGXK8qh7uLiaYtbe9FA2ftdX
+
+dependencies:
+prompt = "^0.4.1 :  https://github.com/prompt-toolkit/python-prompt-toolkit
+
+instal:

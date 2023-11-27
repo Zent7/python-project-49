@@ -1,12 +1,17 @@
 [tool.poetry]
 name = "brain_games"
 version = "0.1.0"
-description = ""
+description = "brain_games"
 authors = ["Zent7 <mihd020@gmail.com>"]
 readme = "README.md"
 packages = [
   { include = "brain_games" },
 ]
+classifiers = [
+    "Topic :: Software Development :: Build Tools",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+repository = https://github.com/Zent7/python-project-49
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -28,4 +33,3 @@ brain-calc = "brain_games.scripts.games.brain_calc:main"
 brain-gcd = "brain_games.scripts.games.brain_gcd:main"  
 brain-progression = "brain_games.scripts.games.brain_progression:main"
 brain-prime = "brain_games.scripts.games.brain_prime:main"
-
