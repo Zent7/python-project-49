@@ -17,21 +17,16 @@ make lint:
 	poetry run flake8 brain_games
 
 brain-even:
-	cd brain_games/games && \
-	poetry run python -m brain_even
+	poetry run brain-even
 
 brain-calc:
-	cd games && \
-	poetry run python -m brain_calc
+	poetry run brain-calc
 
 brain-gcd:
-	cd games && \
-	poetry run python -m brain_gcd
+	poetry run brain-gcd
 
 brain-progression:
-	cd games && \
-	poetry run python -m brain_progression
+	poetry run brain-progression
 
 brain-prime:
-	cd games && \
-	poetry run python -m brain_prime
+	poetry run brain-prime
