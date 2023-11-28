@@ -11,7 +11,7 @@ classifiers = [
     "Topic :: Software Development :: Build Tools",
     "Topic :: Software Development :: Libraries :: Python Modules"
 ]
-repository = https://github.com/Zent7/python-project-49
+repository = "https://github.com/Zent7/python-project-49"
 
 [tool.poetry.dependencies]
 python = "^3.10"
