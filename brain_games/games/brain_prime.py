@@ -1,4 +1,4 @@
-import random
+simport random
 
 MIN_NUMBER = 1
 MAX_NUMBER = 100
@@ -24,8 +24,8 @@ def brain_prime():
 
     while True:
         number = random.randint(MIN_NUMBER, MAX_NUMBER)
-        print("Answer 'yes' if the given number is prime. "
-              "Otherwise, answer 'no'.")
+        print('Answer "yes" if the given number is prime. '
+              'Otherwise, answer "no".')
         print(f"Question: {number}")
 
         user_answer = input("Your answer: ").lower()
