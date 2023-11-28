@@ -17,7 +17,7 @@ make lint:
 	poetry run flake8 brain_games
 
 brain-even:
-	cd games && \
+	cd brain_games/games && \
 	poetry run python -m brain_even
 
 brain-calc:
