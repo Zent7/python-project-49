@@ -47,7 +47,7 @@ def brain_progression():
         else:
             print(f"'{user_answer}' is the wrong answer ;(. "
                   f"Correct answer was '{hidden_number}'.")
-            print("Let's try again,", name)
+            print(f"Let's try again, {name}!")
             break
     else:
         print(f"Congratulations, {name}!")
