@@ -50,7 +50,7 @@ def brain_progression():
             print("Let's try again,", name)
             break
     else:
-        print("Congratulations,", name, "You've completed the game!")
+        print(f"Congratulations, {name}!")
 
 
 if __name__ == "__main__":
