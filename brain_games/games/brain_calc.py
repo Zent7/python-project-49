@@ -64,7 +64,12 @@ def brain_calc():
                 print(f"Let's try again, {name}!")
                 return
         else:
-            print('Please enter a valid numeric answer.')
+            print(
+                    f"'{user_answer}' is the wrong answer; "
+                    f"the correct answer was '{correct_answer}'."
+                )
+            print(f"Let's try again, {name}!")
+            return
 
     print(f'Congratulations, {name}!')
 
