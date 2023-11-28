@@ -15,5 +15,3 @@ https://asciinema.org/a/NvGXK8qh7uLiaYtbe9FA2ftdX
 
 dependencies:
 prompt = "^0.4.1 :  https://github.com/prompt-toolkit/python-prompt-toolkit
-
-instal:
