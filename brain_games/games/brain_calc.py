@@ -53,7 +53,7 @@ def brain_calc():
         user_answer = input('Your answer: ')
 
         if user_answer.isdigit():
-            if user_answer == correct_answer:
+            if str(user_answer) == str(correct_answer):
                 print('Correct!')
                 score += 1
             else:
@@ -65,9 +65,9 @@ def brain_calc():
                 return
         else:
             print(
-                    f"'{user_answer}' is the wrong answer; "
-                    f"the correct answer was '{correct_answer}'."
-                )
+                f"'{user_answer}' is the wrong answer; "
+                f"the correct answer was '{correct_answer}'."
+            )
             print(f"Let's try again, {name}!")
             return
 

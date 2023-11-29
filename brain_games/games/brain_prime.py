@@ -2,6 +2,7 @@ import random
 
 MIN_NUMBER = 1
 MAX_NUMBER = 100
+NUM_WINS_TO_END = 3
 
 
 def main():
@@ -22,7 +23,9 @@ def brain_prime():
     name = input("May I have your name? ")
     print(f"Hello, {name}!")
 
-    while True:
+    wins = 0
+
+    while wins < NUM_WINS_TO_END:
         number = random.randint(MIN_NUMBER, MAX_NUMBER)
         print('Answer "yes" if given number is prime. '
               'Otherwise answer "no".')
@@ -33,12 +36,14 @@ def brain_prime():
         if (user_answer == 'yes' and is_prime(number)) or \
            (user_answer == 'no' and not is_prime(number)):
             print("Correct!")
+            wins += 1
         else:
             correct_answer = 'yes' if is_prime(number) else 'no'
             print(f"Sorry, '{user_answer}' is wrong. "
                   f"The correct answer is {correct_answer}.")
+            return
 
-        return
+    print(f"Congratulations, {name}! You've won {NUM_WINS_TO_END} times.")
 
 
 if __name__ == "__main__":
