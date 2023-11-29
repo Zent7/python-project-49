@@ -18,30 +18,49 @@ def is_prime(num):
     return True
 
 
-def brain_prime():
+def welcome_user():
     print("Welcome to the Brain Games!")
     name = input("May I have your name? ")
     print(f"Hello, {name}!")
+    return name
 
+
+def display_question():
+    number = random.randint(MIN_NUMBER, MAX_NUMBER)
+    print('Answer "yes" if given number is prime. '
+          'Otherwise answer "no".')
+    print(f"Question: {number}")
+    return number
+
+
+def get_user_answer():
+    return input("Your answer: ").lower()
+
+
+def display_result(is_correct, correct_answer):
+    if is_correct:
+        print("Correct!")
+    else:
+        print(f"Sorry, your answer is wrong. "
+              f"The correct answer is {correct_answer}.")
+
+
+def brain_prime():
+    name = welcome_user()
     wins = 0
 
     while wins < NUM_WINS_TO_END:
-        number = random.randint(MIN_NUMBER, MAX_NUMBER)
-        print('Answer "yes" if given number is prime. '
-              'Otherwise answer "no".')
-        print(f"Question: {number}")
+        number = display_question()
+        user_answer = get_user_answer()
 
-        user_answer = input("Your answer: ").lower()
+        correct_answer = 'yes' if is_prime(number) else 'no'
+        is_correct = (user_answer == 'yes' and is_prime(number)) or \
+                     (user_answer == 'no' and not is_prime(number))
 
-        if (user_answer == 'yes' and is_prime(number)) or \
-           (user_answer == 'no' and not is_prime(number)):
-            print("Correct!")
+        display_result(is_correct, correct_answer)
+
+        if is_correct:
             wins += 1
-        else:
-            correct_answer = 'yes' if is_prime(number) else 'no'
-            print(f"Sorry, '{user_answer}' is wrong. "
-                  f"The correct answer is {correct_answer}.")
-            return
 
     print(f"Congratulations, {name}! You've won {NUM_WINS_TO_END} times.")
 
