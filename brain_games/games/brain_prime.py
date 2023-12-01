@@ -26,8 +26,8 @@ def welcome_user():
 
 
 def display_question():
-    print('Answer "yes" if the given number is prime. Otherwise answer "no".')
     number = random.randint(MIN_NUMBER, MAX_NUMBER)
+    print('Answer "yes" if the given number is prime. Otherwise answer "no".')
     print(f"Question: {number}")
     return number
 
@@ -41,27 +41,33 @@ def display_result(is_correct, correct_answer):
         print("Correct!\n")
     else:
         print(f"Sorry, your answer is wrong. The correct answer is {correct_answer}.\n")
-        raise SystemExit
+        raise SystemExit  # Без блока except KeyboardInterrupt
 
 
 def brain_prime():
     name = welcome_user()
     wins = 0
 
-    while wins < NUM_WINS_TO_END:
-        number = display_question()
-        user_answer = get_user_answer()
+    try:
+        while wins < NUM_WINS_TO_END:
+            display_question()
+            user_answer = get_user_answer()
 
-        correct_answer = 'yes' if is_prime(number) else 'no'
-        is_correct = (user_answer == 'yes' and is_prime(number)) or \
-                    (user_answer == 'no' and not is_prime(number))
+            number = display_question()
+            correct_answer = 'yes' if is_prime(number) else 'no'
+            is_correct = (user_answer == 'yes' and is_prime(number)) or \
+                        (user_answer == 'no' and not is_prime(number))
 
-        display_result(is_correct, correct_answer)
+            display_result(is_correct, correct_answer)
 
-        if is_correct:
-            wins += 1
+            if is_correct:
+                wins += 1
 
-    print(f"Congratulations, {name}!")
+        print(f"Congratulations, {name}! You've won {NUM_WINS_TO_END} times.")
+
+    except KeyboardInterrupt:
+        print("\nGoodbye!")
+        raise SystemExit
 
 
 if __name__ == "__main__":
