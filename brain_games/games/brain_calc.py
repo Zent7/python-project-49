@@ -9,11 +9,11 @@ def main():
     brain_calc()
 
 
-def plus(a, b):
+def add(a, b):
     return a + b
 
 
-def minus(a, b):
+def subtract(a, b):
     return a - b
 
 
@@ -22,12 +22,15 @@ def multiply(a, b):
 
 
 def calculate_answer(num1, num2, operation):
+    result = 0
     if operation == '+':
-        return plus(num1, num2)
+        result = add(num1, num2)
     elif operation == '-':
-        return minus(num1, num2)
+        result = subtract(num1, num2)
     elif operation == '*':
-        return multiply(num1, num2)
+        result = multiply(num1, num2)
+    
+    return int(result)  
 
 
 def generate_question():
@@ -52,17 +55,15 @@ def brain_calc():
         print(f'Question: {expression}')
         user_answer = input('Your answer: ')
 
-        if user_answer.isdigit():
-            if str(user_answer) == str(correct_answer):
-                print('Correct!')
-                score += 1
-            else:
-                print(
-                    f"'{user_answer}' is the wrong answer; "
-                    f"the correct answer was '{correct_answer}'."
-                )
-                print(f"Let's try again, {name}!")
-                return
+        try:
+            user_answer = int(user_answer)
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+            continue
+
+        if user_answer == correct_answer or user_answer == int(correct_answer):
+            print('Correct!')
+            score += 1
         else:
             print(
                 f"'{user_answer}' is the wrong answer; "
