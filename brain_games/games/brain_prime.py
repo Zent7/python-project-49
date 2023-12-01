@@ -50,8 +50,7 @@ def brain_prime():
     wins = 0
 
     while wins < NUM_WINS_TO_END:
-        print('Answer "yes" if the given number is prime.\n'
-              'Otherwise answer "no".')
+        print('Answer "yes" if given number is prime. Otherwise answer "no".')
 
         number = display_question()
         user_answer = get_user_answer()
