@@ -62,7 +62,7 @@ def brain_prime():
         if is_correct:
             wins += 1
 
-    print(f"Congratulations, {name}! You've won {NUM_WINS_TO_END} times.")
+    print(f"Congratulations, {name}!")
 
 
 if __name__ == "__main__":

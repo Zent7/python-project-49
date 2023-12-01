@@ -29,8 +29,7 @@ def calculate_answer(num1, num2, operation):
         result = subtract(num1, num2)
     elif operation == '*':
         result = multiply(num1, num2)
-    
-    return int(result)  
+    return int(result)
 
 
 def generate_question():
