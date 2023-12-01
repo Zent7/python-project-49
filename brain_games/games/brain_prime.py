@@ -26,6 +26,7 @@ def welcome_user():
 
 
 def display_question():
+    print('Answer "yes" if the given number is prime. Otherwise answer "no".')
     number = random.randint(MIN_NUMBER, MAX_NUMBER)
     print(f"Question: {number}")
     return number
@@ -49,7 +50,6 @@ def brain_prime():
 
     while wins < NUM_WINS_TO_END:
         number = display_question()
-        print('Answer "yes" if the given number is prime. Otherwise answer "no".')
         user_answer = get_user_answer()
 
         correct_answer = 'yes' if is_prime(number) else 'no'
