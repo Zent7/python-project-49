@@ -42,6 +42,7 @@ def display_result(is_correct):
         print("Sorry, your answer is wrong.\n"
               "The correct answer is 'yes' if the given number is prime.\n"
               "Otherwise answer 'no'.\n")
+        print("Let's try again, Tirion!")
         raise SystemExit
 
 
