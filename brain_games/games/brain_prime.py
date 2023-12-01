@@ -36,12 +36,12 @@ def get_user_answer():
     return input("Your answer: ").lower()
 
 
-def display_result(is_correct, correct_answer):
+def display_result(is_correct):
     if is_correct:
         print("Correct!\n")
     else:
-        print(f"Sorry, your answer is wrong. The correct answer is {correct_answer}.\n")
-        raise SystemExit  # Без блока except KeyboardInterrupt
+        print("Sorry, your answer is wrong. The correct answer is 'yes' if the given number is prime. Otherwise answer 'no'.\n")
+        raise SystemExit 
 
 
 def brain_prime():
@@ -50,20 +50,18 @@ def brain_prime():
 
     try:
         while wins < NUM_WINS_TO_END:
-            display_question()
+            number = display_question()
             user_answer = get_user_answer()
 
-            number = display_question()
             correct_answer = 'yes' if is_prime(number) else 'no'
-            is_correct = (user_answer == 'yes' and is_prime(number)) or \
-                        (user_answer == 'no' and not is_prime(number))
+            is_correct = (user_answer == correct_answer)
 
-            display_result(is_correct, correct_answer)
+            display_result(is_correct)
 
             if is_correct:
                 wins += 1
 
-        print(f"Congratulations, {name}! You've won {NUM_WINS_TO_END} times.")
+        print(f"Congratulations, {name}!")
 
     except KeyboardInterrupt:
         print("\nGoodbye!")
