@@ -1,52 +1,21 @@
-NUM_QUESTIONS_TO_WIN = 3
+import prompt
+from brain_games.consts import NUMBER_OF_ROUNDS
 
-def welcome_user():
-    print("Welcome to the Brain Games!")
-    name = input("May I have your name? ")
-    print(f"Hello, {name}!")
-    return name
 
-def display_question(question):
-    print(f"Question: {question}")
-
-def get_user_answer():
-    return input("Your answer: ")
-
-def display_result(is_correct, correct_answer=None):
-    if is_correct:
-        print("Correct!\n")
-    else:
-        print(f"'{correct_answer}' is wrong answer ;(. Correct answer was '{correct_answer}'.")
-        print("Let's try again!\n")
-        raise SystemExit
-
-def play_game(game_logic, instruction):
-    name = welcome_user()
-    score = 0
-
-    while score < NUM_QUESTIONS_TO_WIN:
-        print(instruction)
-        question, correct_answer = game_logic()
-        display_question(question)
-        user_answer = get_user_answer()
-
-        try:
-            user_answer = int(user_answer)
-        except ValueError:
-            print("Invalid input. Please enter a valid number.")
-            continue
-
-        is_correct = (user_answer == correct_answer)
-        display_result(is_correct, correct_answer)
-
-        if is_correct:
-            score += 1
-
-    print(f"Congratulations, {name}!")
-
-if __name__ == "__main__":
-    def game_logic():
-        raise NotImplementedError("You should implement the game_logic function in your specific game file.")
-
-    instruction = "This is a generic game. Replace this instruction in your specific game file."
-    play_game(game_logic, instruction)  
+def start_game(get_question_and_answer, game_instruction):
+    user_name = prompt.string('Welcome to the Brain Games!\n'
+                              'May I have your name? ')
+    print(f"Hello, {user_name}!\
+        \n{game_instruction}")
+    for _ in range(NUMBER_OF_ROUNDS):
+        question, correct_answer = get_question_and_answer()
+        user_answer = prompt.string(f'Question: {question}\
+                                    \nYour answer: ')
+        if user_answer == correct_answer:
+            print('Correct!')
+        else:
+            print(f"'{user_answer}' is the wrong answer ;(. "
+                  f"Correct answer was '{correct_answer}'.\n"
+                  f"Let's try again, {user_name}!")
+            return
+    print(f"Congratulations, {user_name}!")
