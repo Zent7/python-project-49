@@ -1,46 +1,17 @@
-import random
-
-MIN_NUMBER = 1
-MAX_NUMBER = 100
-NUM_ANSWERS_TO_WIN = 3
+from brain_games.engine import start_game
+from brain_games.consts import DESCRIPTION_EVEN
+from brain_games.utils import get_rand_num
 
 
-def main():
-    brain_even()
-
-
-def even(number):
+def is_even(number):
     return number % 2 == 0
 
 
-def brain_even():
-    print('Welcome to the Brain Games!')
-    name = input('May I have your name? ')
-    print(f'Hello, {name}!')
-
-    score = 0
-    while score < NUM_ANSWERS_TO_WIN:
-        number = random.randint(MIN_NUMBER, MAX_NUMBER)
-        print('Answer "yes" if the number is even, '
-              'otherwise answer "no".')
-        print(f'Question: {number}')
-        user_answer = input('Your answer: ').lower()
-
-        if (user_answer == 'yes' and even(number)) or \
-           (user_answer == 'no' and not even(number)):
-            print('Correct!')
-            score += 1
-        else:
-            correct_answer = 'yes' if even(number) else 'no'
-            print(
-                f"'{user_answer}' is the wrong answer; "
-                f"the correct answer was '{correct_answer}'."
-            )
-            print(f"Let's try again, {name}!")
-            return
-
-    print(f'Congratulations, {name}!')
+def get_even_or_odd_num_and_answer():
+    number = get_rand_num()
+    answer = 'yes' if is_even(number) else 'no'
+    return number, answer
 
 
-if __name__ == "__main__":
-    main()
+def run_even_game():
+    start_game(get_even_or_odd_num_and_answer, DESCRIPTION_EVEN)

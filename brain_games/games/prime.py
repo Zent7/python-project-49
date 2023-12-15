@@ -1,71 +1,22 @@
-import random
-
-MIN_NUMBER = 1
-MAX_NUMBER = 100
-NUM_WINS_TO_END = 3
+from brain_games.engine import start_game
+from brain_games.consts import DESCRIPTION_PRIME
+from brain_games.utils import get_rand_num
 
 
-def main():
-    brain_prime()
-
-
-def is_prime(num):
-    if num < 2:
+def is_prime(number):
+    if number < 2:
         return False
-    for i in range(2, int(num**0.5) + 1):
-        if num % i == 0:
+    for i in range(2, int(number ** 0.5 + 1)):
+        if number % i == 0:
             return False
     return True
 
 
-def welcome_user():
-    print("Welcome to the Brain Games!")
-    name = input("May I have your name? ")
-    print(f"Hello, {name}!")
-    return name
+def get_problem_num_and_prime_answer():
+    number = get_rand_num()
+    answer = 'yes' if is_prime(number) else 'no'
+    return number, answer
 
 
-def display_question():
-    number = random.randint(MIN_NUMBER, MAX_NUMBER)
-    print(f"Question: {number}")
-    return number
-
-
-def get_user_answer():
-    return input("Your answer: ").lower()
-
-
-def display_result(is_correct):
-    if is_correct:
-        print("Correct!\n")
-    else:
-        print("Sorry, your answer is wrong.\n"
-              "The correct answer is 'yes' if the given number is prime.\n"
-              "Otherwise answer 'no'.\n")
-        print("Let's try again, Tirion!")
-        raise SystemExit
-
-
-def brain_prime():
-    name = welcome_user()
-    wins = 0
-
-    while wins < NUM_WINS_TO_END:
-        print('Answer "yes" if given number is prime. Otherwise answer "no".')
-
-        number = display_question()
-        user_answer = get_user_answer()
-
-        correct_answer = 'yes' if is_prime(number) else 'no'
-        is_correct = (user_answer == correct_answer)
-
-        display_result(is_correct)
-
-        if is_correct:
-            wins += 1
-
-    print(f"Congratulations, {name}!")
-
-
-if __name__ == "__main__":
-    main()
+def run_prime_game():
+    start_game(get_problem_num_and_prime_answer, DESCRIPTION_PRIME)

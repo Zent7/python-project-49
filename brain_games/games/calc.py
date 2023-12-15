@@ -1,52 +1,30 @@
 import random
+from brain_games.engine import start_game
+from brain_games.consts import DESCRIPTION_CALC, MATH_SIGNS
+from brain_games.utils import get_rand_num
 
-MIN_NUMBER = 1
-MAX_NUMBER = 100
-NUM_QUESTIONS_TO_WIN = 3
 
-def welcome_user():
-    print("Welcome to the Brain Games!")
-    name = input("May I have your name? ")
-    print(f"Hello, {name}!")
-    return name
+def get_result_by_math_sign(num1, num2, math_sign):
+    match math_sign:
+        case '+':
+            return num1 + num2
+        case '-':
+            return num1 - num2
+        case '*':
+            return num1 * num2
+        case _:
+            raise ValueError('Unsupported operator')
 
-def generate_question():
-    num1 = random.randint(MIN_NUMBER, MAX_NUMBER)
-    num2 = random.randint(MIN_NUMBER, MAX_NUMBER)
-    operation = random.choice(['+', '-', '*'])
-    expression = f'{num1} {operation} {num2}'
-    correct_answer = calculate_answer(num1, num2, operation)
-    return expression, correct_answer
 
-def calculate_answer(num1, num2, operation):
-    if operation == '+':
-        return num1 + num2
-    elif operation == '-':
-        return num1 - num2
-    elif operation == '*':
-        return num1 * num2
+def get_math_expression_and_result():
+    num1, num2 = get_rand_num(), get_rand_num()
+    math_sign = random.choice(MATH_SIGNS)
 
-def game_logic():
-    return generate_question()
+    math_expression = f"{num1} {math_sign} {num2}"
+    result = get_result_by_math_sign(num1, num2, math_sign)
 
-def display_question(question):
-    print(f"Question: {question}")
+    return math_expression, str(result)
 
-def get_user_answer():
-    return input("Your answer: ")
 
-def display_result(is_correct, correct_answer=None):
-    if is_correct:
-        print("Correct!\n")
-    else:
-        print(f"Sorry, your answer is wrong. Correct answer was '{correct_answer}'.\n")
-        print("Let's try again, {name}!\n")
-        raise SystemExit
-
-def main():
-    name = welcome_user()
-    instruction = "What is the result of the expression?"
-    play_game(game_logic, instruction, display_question, get_user_answer, display_result)
-
-if __name__ == "__main__":
-    main()
+def run_calc_game():
+    start_game(get_math_expression_and_result, DESCRIPTION_CALC)
